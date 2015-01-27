@@ -1,12 +1,17 @@
 # DateKit README #
 
+![DateKit](https://snowdog.co/wp-content/uploads/2015/01/IMG-2865.jpg)
+
 ### What is DateKit?
 
 * *DateKit* is a simple Swift framework to simplify operations on NSDate instances. Playground presenting all the features will be available soon.
 * Version: 0.1
 
-### Setup
-Download/clone repo and you can start using DateKit.
+### Installation
+
+You can use CocoaPods to add it to your Swift project. Just add `pod 'DateKit'` and run `pod install`.
+
+### Development
 
 DateKit requires Quick and Nimble (bdd and matchers frameworks). They can be added manually to DateKit project. Download [Quick](https://github.com/Quick/Quick) and [Nimble](https://github.com/Quick/Nimble) from Github and add them to DateKit project.
 
