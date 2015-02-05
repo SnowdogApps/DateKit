@@ -4,7 +4,7 @@
 
 ### What is DateKit?
 
-* *DateKit* is a simple Swift framework to simplify operations on NSDate instances. Playground presenting all the features will be available soon.
+* *DateKit* is a simple Swift framework to simplify operations on NSDate instances.
 * Version: 0.1
 
 ### Installation
