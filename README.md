@@ -5,11 +5,18 @@
 ### What is DateKit?
 
 * *DateKit* is a simple Swift framework to simplify operations on NSDate instances.
-* Version: 0.1
+* Version: 0.1.1
 
 ### Installation
 
 You can use CocoaPods to add it to your Swift project. Just add `pod 'DateKit'` and run `pod install`.
+
+For iOS 7.0 you can add DateKit as submodule. To do that you need first:
+
+  git submodule add https://github.com/SnowdogApps/DateKit
+
+Then add DateKit.framework to Target Dependencies and Link Binary With Libraries.
+Now you can import DateKit where you want to use it.
 
 ### Development
 
