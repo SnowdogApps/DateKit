@@ -20,6 +20,7 @@
 		BF66C5B11A7018B50023C020 /* NSDateInternalHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF66C5B01A7018B50023C020 /* NSDateInternalHelpers.swift */; };
 		BF6FA9921A38D087006FCCE9 /* DateKit.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6FA9911A38D087006FCCE9 /* DateKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF6FA9981A38D087006FCCE9 /* DateKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6FA98C1A38D087006FCCE9 /* DateKit.framework */; };
+		BFA68E5A1A96376B00C1AEC9 /* DateKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF6FA98C1A38D087006FCCE9 /* DateKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BFD370A11A70192900217378 /* NSDateInternalHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF66C5B01A7018B50023C020 /* NSDateInternalHelpers.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +33,19 @@
 			remoteInfo = DateKit;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BFA68E591A96375A00C1AEC9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BFA68E5A1A96376B00C1AEC9 /* DateKit.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		128B5C156672E20056B65AE0 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +198,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF6FA9A51A38D087006FCCE9 /* Build configuration list for PBXNativeTarget "DateKitTests" */;
 			buildPhases = (
+				BFA68E591A96375A00C1AEC9 /* CopyFiles */,
 				BF6FA9931A38D087006FCCE9 /* Sources */,
 				BF6FA9941A38D087006FCCE9 /* Frameworks */,
 				BF6FA9951A38D087006FCCE9 /* Resources */,
