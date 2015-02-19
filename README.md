@@ -1,3 +1,8 @@
+![Pod version](https://cocoapod-badges.herokuapp.com/v/DateKit/badge.png)
+![Platform](https://cocoapod-badges.herokuapp.com/p/DateKit/badge.png)
+![License](https://cocoapod-badges.herokuapp.com/l/DateKit/badge.png)
+![Tests](https://travis-ci.org/SnowdogApps/DateKit.svg?branch=master)
+
 # DateKit README #
 
 ![DateKit](https://snowdog.co/wp-content/uploads/2015/01/IMG-2865.jpg)
