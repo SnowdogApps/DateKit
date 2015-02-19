@@ -1,0 +1,10 @@
+language: objective-c
+
+before_install:
+  - brew update
+  - brew outdated xctool || brew upgrade xctool
+  - sudo gem install cocoapods --pre
+
+xcode_workspace: DateKit.xcworkspace
+xcode_scheme: DateKit
+xcode_sdk: iphonesimulator
