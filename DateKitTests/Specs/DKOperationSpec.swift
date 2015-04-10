@@ -247,12 +247,12 @@ class DKOperationSpec: QuickSpec {
 class OperationPropertiesTestsExampleConfiguration : QuickConfiguration {
     override class func configure(configuration: Configuration) {
         sharedExamples("operation_properties_tests") { (sharedExampleContext: SharedExampleContext) in
-            var configDict: [String: AnyObject] = sharedExampleContext() as [String: AnyObject]
+            var configDict: [String: AnyObject] = sharedExampleContext() as! [String: AnyObject]
             
-            let operation = configDict["operation"] as Operation
-            let value: Int = configDict["value"] as Int
-            let date: NSDate = configDict["date"] as NSDate
-            let unitRawValue: UInt = configDict["unit"] as UInt
+            let operation = configDict["operation"] as! Operation
+            let value: Int = configDict["value"] as! Int
+            let date: NSDate = configDict["date"] as! NSDate
+            let unitRawValue: UInt = configDict["unit"] as! UInt
             
             it("should have exactly same value as passed in initialization") {
                 expect(operation.value).to(equal(value))
@@ -273,10 +273,10 @@ class OperationMathOperationExampleConfiguration : QuickConfiguration {
     
     override class func configure(configuration: Configuration) {
         sharedExamples("math_operation") { (sharedExampleContext: SharedExampleContext) in
-            var configDict: [String: AnyObject] = sharedExampleContext() as [String: AnyObject]
-            let operation: Operation = configDict["operation"] as Operation
-            let mathOperator: String = configDict["operator"] as String
-            let value: Int = configDict["value"] as Int
+            var configDict: [String: AnyObject] = sharedExampleContext() as! [String: AnyObject]
+            let operation: Operation = configDict["operation"] as! Operation
+            let mathOperator: String = configDict["operator"] as! String
+            let value: Int = configDict["value"] as! Int
             
             var resultOperation: Operation? = operation.mathOperationByString(mathOperator, value: value)
             var resultDate: NSDate = operation.resultingDate(mathOperator, value: value)
@@ -304,11 +304,11 @@ class OperationMathOperationExampleConfiguration : QuickConfiguration {
 class OperationGettersExampleConfiguration : QuickConfiguration {
     override class func configure(configuration: Configuration) {
         sharedExamples("operation_getters_setters") { (sharedExampleContext: SharedExampleContext) in
-            var configDict: [String: AnyObject] = sharedExampleContext() as [String: AnyObject]
+            var configDict: [String: AnyObject] = sharedExampleContext() as! [String: AnyObject]
 
-            let operation: Operation = configDict["operation"] as Operation
-            let value: Int = configDict["value"] as Int
-            let getterString: String = configDict["getter"] as String
+            let operation: Operation = configDict["operation"] as! Operation
+            let value: Int = configDict["value"] as! Int
+            let getterString: String = configDict["getter"] as! String
             
             var resultOperation: Operation? = operation.getterOperationByString(getterString)
             
@@ -362,8 +362,8 @@ class OperationHelpersExampleConfiguration : QuickConfiguration {
     
     override class func configure(configuration: Configuration) {
         sharedExamples("operation_helper") { (sharedExampleContext: SharedExampleContext) in
-            var configDict: [String: AnyObject] = sharedExampleContext() as [String: AnyObject]
-            var helper: String = configDict["helper"] as String
+            var configDict: [String: AnyObject] = sharedExampleContext() as! [String: AnyObject]
+            var helper: String = configDict["helper"] as! String
 
             describe("second") {
                 var cfgDict: [String: AnyObject] = configDict
@@ -418,12 +418,12 @@ class OperationHelpersExampleConfiguration : QuickConfiguration {
 class OperationHelpersForUnitExampleConfiguration : QuickConfiguration {
     override class func configure(configuration: Configuration) {
         sharedExamples("operation_helper_for_unit") { (sharedExampleContext: SharedExampleContext) in
-            var configDict: [String: AnyObject] = sharedExampleContext() as [String: AnyObject]
+            var configDict: [String: AnyObject] = sharedExampleContext() as! [String: AnyObject]
 
-            let unit: UInt = configDict["unit"] as UInt
-            let value: Int = configDict["value"] as Int
-            let date: NSDate = configDict["date"] as NSDate
-            let helperString: String = configDict["helper"] as String
+            let unit: UInt = configDict["unit"] as! UInt
+            let value: Int = configDict["value"] as! Int
+            let date: NSDate = configDict["date"] as! NSDate
+            let helperString: String = configDict["helper"] as! String
 
             var operation = Operation(value: value, date: date, unit: NSCalendarUnit(unit))
             var referenceDate: NSDate = date.setComponent(NSCalendarUnit(unit), value: value)
@@ -443,10 +443,10 @@ class OperationHelpersForUnitExampleConfiguration : QuickConfiguration {
 class OperationUnitLengthExampleConfiguration : QuickConfiguration {
     override class func configure(configuration: Configuration) {
         sharedExamples("unit_length") { (sharedExampleContext: SharedExampleContext) in
-            var configDict: [String: AnyObject] = sharedExampleContext() as [String: AnyObject]
+            var configDict: [String: AnyObject] = sharedExampleContext() as! [String: AnyObject]
 
-            let date: NSDate = configDict["date"] as NSDate
-            let unit: UInt = configDict["unit"] as UInt
+            let date: NSDate = configDict["date"] as! NSDate
+            let unit: UInt = configDict["unit"] as! UInt
 //            let expectedLength: Int = configDict["length"] as Int
 //            let operation: Operation = Operation(value: 0, date: date, unit: NSCalendarUnit(unit))
 //

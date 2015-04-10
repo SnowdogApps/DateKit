@@ -47,7 +47,7 @@ extension NSDate {
 
 extension NSDate {
     internal func dateOperation(unit: NSCalendarUnit) -> Operation {
-        return Operation(value: self.components.valueForKey(unit.string()) as Int, date: self, unit: unit)
+        return Operation(value: self.components.valueForKey(unit.string()) as! Int, date: self, unit: unit)
     }
     
     internal func setDateOperation(unit: NSCalendarUnit, value: Int) -> Operation {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		272F26FF15C365E466E0537E /* Pods_DateKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F575FA7776C32F361B88954 /* Pods_DateKitTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BF4411821A7555CC009C119A /* DKOperationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2BF87F1A6C3842004592BD /* DKOperationSpec.swift */; };
 		BF4411831A7555CC009C119A /* NSDateExtensionsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01D6A71A3A5A6100D05667 /* NSDateExtensionsSpec.swift */; };
 		BF66C5A01A70165C0023C020 /* DateKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF66C59F1A70165C0023C020 /* DateKit.swift */; };
@@ -49,6 +50,8 @@
 
 /* Begin PBXFileReference section */
 		128B5C156672E20056B65AE0 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4008D775AB2A63E8E5879204 /* Pods-DateKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DateKitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DateKitTests/Pods-DateKitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5484E768AC3D78027D0B2DEA /* Pods-DateKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DateKitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DateKitTests/Pods-DateKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		6F575FA7776C32F361B88954 /* Pods_DateKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DateKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF01D67A1A3A18C400D05667 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtensions.swift; sourceTree = "<group>"; };
 		BF01D6A71A3A5A6100D05667 /* NSDateExtensionsSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtensionsSpec.swift; sourceTree = "<group>"; };
@@ -78,6 +81,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF6FA9981A38D087006FCCE9 /* DateKit.framework in Frameworks */,
+				272F26FF15C365E466E0537E /* Pods_DateKitTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +114,7 @@
 				BF6FA99B1A38D087006FCCE9 /* DateKitTests */,
 				BF6FA98D1A38D087006FCCE9 /* Products */,
 				613299CC263E4DA9BEAC941F /* Frameworks */,
+				DDEC09AF48B72CCBE6085F98 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,6 +166,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		DDEC09AF48B72CCBE6085F98 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4008D775AB2A63E8E5879204 /* Pods-DateKitTests.debug.xcconfig */,
+				5484E768AC3D78027D0B2DEA /* Pods-DateKitTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -198,10 +212,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF6FA9A51A38D087006FCCE9 /* Build configuration list for PBXNativeTarget "DateKitTests" */;
 			buildPhases = (
+				AC034BEDC281B25B688B85C3 /* Check Pods Manifest.lock */,
 				BFA68E591A96375A00C1AEC9 /* CopyFiles */,
 				BF6FA9931A38D087006FCCE9 /* Sources */,
 				BF6FA9941A38D087006FCCE9 /* Frameworks */,
 				BF6FA9951A38D087006FCCE9 /* Resources */,
+				50156A501ADA7B1E1D95619E /* Embed Pods Frameworks */,
+				F0A9C8925EEF31BA02DE93BC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -266,6 +283,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		50156A501ADA7B1E1D95619E /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DateKitTests/Pods-DateKitTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC034BEDC281B25B688B85C3 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		BFF65B911A63299700F6663A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -278,6 +325,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "TAGS=\"TODO:|FIXME:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}\" \\( -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
+		};
+		F0A9C8925EEF31BA02DE93BC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DateKitTests/Pods-DateKitTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -441,6 +503,7 @@
 		};
 		BF6FA9A61A38D087006FCCE9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4008D775AB2A63E8E5879204 /* Pods-DateKitTests.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -458,6 +521,7 @@
 		};
 		BF6FA9A71A38D087006FCCE9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5484E768AC3D78027D0B2DEA /* Pods-DateKitTests.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
