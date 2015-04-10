@@ -58,8 +58,8 @@ extension NSDate {
     
         for unit: NSCalendarUnit in units {
             let unitString = unit.string()
-            var firstComponentValue: Int = firstComponents.valueForKey(unitString) as Int!
-            var secondComponentValue: Int = secondComponents.valueForKey(unitString) as Int!
+            var firstComponentValue: Int = firstComponents.valueForKey(unitString) as! Int!
+            var secondComponentValue: Int = secondComponents.valueForKey(unitString) as! Int!
             
             if firstComponentValue != secondComponentValue {
                 return self.compare(date)

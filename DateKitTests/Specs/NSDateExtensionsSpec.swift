@@ -378,15 +378,15 @@ class NSDateExtensionsSpec: QuickSpec {
 class NSDateComponentSharedConfiguration : QuickConfiguration {
     override class func configure(configuration: Configuration) {
         sharedExamples("component") { (sharedExampleContext: SharedExampleContext) in
-            var configurationDict: [String: AnyObject] = sharedExampleContext() as [String: AnyObject]
+            var configurationDict: [String: AnyObject] = sharedExampleContext() as! [String: AnyObject]
             
             var referenceDate: NSDate? = nil
             var testDate: NSDate! = nil
             
-            let unit: UInt = configurationDict["unit"] as UInt!
-            let value: Int = configurationDict["value"] as Int!
+            let unit: UInt = configurationDict["unit"] as! UInt!
+            let value: Int = configurationDict["value"] as! Int!
             
-            let debug: Bool? = configurationDict["debug"] as Bool?
+            let debug: Bool? = configurationDict["debug"] as! Bool?
             
             beforeEach {
                 let originDate = NSDate(timeIntervalSince1970: 0)
@@ -430,12 +430,12 @@ class NSDateComponentSharedConfiguration : QuickConfiguration {
 class NSDateHelperSharedConfiguration : QuickConfiguration {
     override class func configure(configuration: Configuration) {
         sharedExamples("Date helper") { (sharedExampleContext: SharedExampleContext) in
-            var configDict: [String: AnyObject] = sharedExampleContext() as [String: AnyObject]
+            var configDict: [String: AnyObject] = sharedExampleContext() as! [String: AnyObject]
 
-            let helperString: String = configDict["helper"] as String
-            let debug: Bool? = configDict["debug"] as Bool?
-            let baseDate: NSDate = configDict["baseDate"] as NSDate
-            let referenceDate: NSDate = configDict["referenceDate"] as NSDate
+            let helperString: String = configDict["helper"] as! String
+            let debug: Bool? = configDict["debug"] as! Bool?
+            let baseDate: NSDate = configDict["baseDate"] as! NSDate
+            let referenceDate: NSDate = configDict["referenceDate"] as! NSDate
 
             var resultDate: NSDate? = nil
             
