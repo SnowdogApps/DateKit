@@ -7,12 +7,12 @@
 
 ![DateKit](https://snowdog.co/wp-content/uploads/2015/01/IMG-2865.jpg)
 
-### What is DateKit?
+## What is DateKit?
 
 * *DateKit* is a simple Swift framework to simplify operations on NSDate instances.
 * Version: 0.1.1
 
-### Installation
+## Installation
 
 You can use CocoaPods to add it to your Swift project. Just add `pod 'DateKit'` and run `pod install`.
 
@@ -25,7 +25,18 @@ git submodule add https://github.com/SnowdogApps/DateKit
 Then add DateKit.framework to Target Dependencies and Link Binary With Libraries.
 Now you can import DateKit where you want to use it.
 
-### Development
+### Swift 1.2
+
+For Swift 1.2 we recommend to refer to the latest commit on master branch in your Podfile:
+
+```
+pod 'DateKit',
+    :git => "https://github.com/SnowdogApps/DateKit.git",
+    :commit => "latest commit sha",
+    :branch => "master"
+```
+
+## Development
 
 DateKit requires Quick and Nimble (bdd and matchers frameworks). They can be added manually to DateKit project. Download [Quick](https://github.com/Quick/Quick) and [Nimble](https://github.com/Quick/Nimble) from Github and add them to DateKit project.
 
@@ -37,7 +48,7 @@ pod install
 Please remember that CocoaPods are in beta for Swift. Don't forget to get pre-release version of CocoaPods: `gem install cocoapods --pre`.
 Close DateKit project. Open DateKit.xcworkspace file and run tests as usually (cmd + U).
 
-### Playground
+## Playground
 There's a Playground on the repo, so you can play a bit with DateKit. To use Playground create a workspace with DateKit.project (or use the one created by cocoapods), build DateKit, and then drag playground into the workspace. Have fun!
 
 Any questions can be asked to r.szeja@snowdog.pl
