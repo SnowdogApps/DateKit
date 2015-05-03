@@ -10,6 +10,7 @@ import Foundation
 
 // MARK: Operations on NSDate components and comparing components
 public class Operation: Comparable, Equatable {
+    
     init(value v: Int, date d: NSDate, unit u: NSCalendarUnit) {
         value = v
         date = d
@@ -21,28 +22,28 @@ public class Operation: Comparable, Equatable {
     internal let unit: NSCalendarUnit
 }
 
-extension Operation {
-    public func add(value: Int) -> Operation {
+public extension Operation {
+    
+    func add(value: Int) -> Operation {
         let newValue = self.value + value
         return Operation(value: newValue, date: self.date.setComponent(self.unit, value: newValue), unit: self.unit)
     }
     
-    public func substract(value: Int) -> Operation {
+    func substract(value: Int) -> Operation {
         let newValue = self.value - value
         return Operation(value: newValue, date: self.date.setComponent(self.unit, value: newValue), unit: self.unit)
     }
 }
 
-
 // MARK: Operation getters
 extension Operation: DateKitOperationGetters {
-    public var seconds: Operation { get { return Operation(value: value, date: date, unit: .CalendarUnitSecond) } }
-    public var minutes: Operation { get { return Operation(value: value, date: date, unit: .CalendarUnitMinute) } }
-    public var hours:   Operation { get { return Operation(value: value, date: date, unit: .CalendarUnitHour) } }
-    public var days:    Operation { get { return Operation(value: value, date: date, unit: .CalendarUnitDay) } }
-    public var months:  Operation { get { return Operation(value: value, date: date, unit: .CalendarUnitMonth) } }
-    public var years:   Operation { get { return Operation(value: value, date: date, unit: .CalendarUnitYear) } }
-    public var eras:    Operation { get { return Operation(value: value, date: date, unit: .CalendarUnitEra) } }
+    public var seconds : Operation { get { return Operation(value: value, date: date, unit: .CalendarUnitSecond) } }
+    public var minutes : Operation { get { return Operation(value: value, date: date, unit: .CalendarUnitMinute) } }
+    public var hours   : Operation { get { return Operation(value: value, date: date, unit: .CalendarUnitHour) } }
+    public var days    : Operation { get { return Operation(value: value, date: date, unit: .CalendarUnitDay) } }
+    public var months  : Operation { get { return Operation(value: value, date: date, unit: .CalendarUnitMonth) } }
+    public var years   : Operation { get { return Operation(value: value, date: date, unit: .CalendarUnitYear) } }
+    public var eras    : Operation { get { return Operation(value: value, date: date, unit: .CalendarUnitEra) } }
 }
 
 
@@ -59,8 +60,8 @@ extension Operation: DateKitOperationSetters {
 
 
 // MARK: Operation helpers
-extension Operation {
-    public var first: NSDate {
+public extension Operation {
+    var first: NSDate {
         get {
             switch unit.dateKitUnit() as DateKit.Unit {
             case .Second:   return (date.second(0)  as Operation).date
@@ -74,7 +75,7 @@ extension Operation {
         }
     }
     
-    public var last: NSDate {
+    var last: NSDate {
         get {
             switch unit.dateKitUnit() {
             case .Second:   return (date.second(59) as Operation).date

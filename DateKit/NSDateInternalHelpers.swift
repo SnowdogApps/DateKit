@@ -8,8 +8,9 @@
 
 import Foundation
 
-extension NSDate {
-    internal func calendarUnit(unitsArray: [NSCalendarUnit]) -> NSCalendarUnit {
+internal extension NSDate {
+    
+    func calendarUnit(unitsArray: [NSCalendarUnit]) -> NSCalendarUnit {
         if unitsArray.count <= 0 { return nil }
         var units: UInt = (unitsArray.first as NSCalendarUnit!).rawValue
         
@@ -24,8 +25,9 @@ extension NSDate {
     }
 }
 
-extension NSDate {
-    internal func setComponent(component: NSCalendarUnit, value: Int!) -> NSDate {
+internal extension NSDate {
+    
+    func setComponent(component: NSCalendarUnit, value: Int!) -> NSDate {
         var components = self.components(NSCalendarUnit(UInt.max))
         components.calendar = DateKit.calendar
         
@@ -45,12 +47,13 @@ extension NSDate {
 }
 
 
-extension NSDate {
-    internal func dateOperation(unit: NSCalendarUnit) -> Operation {
+internal extension NSDate {
+    
+    func dateOperation(unit: NSCalendarUnit) -> Operation {
         return Operation(value: self.components.valueForKey(unit.string()) as! Int, date: self, unit: unit)
     }
     
-    internal func setDateOperation(unit: NSCalendarUnit, value: Int) -> Operation {
+    func setDateOperation(unit: NSCalendarUnit, value: Int) -> Operation {
         var resultDate: NSDate = setComponent(unit, value: value)
         return Operation(value: value, date: resultDate, unit: unit)
     }

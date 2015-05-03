@@ -1,11 +1,11 @@
 import Quick
 import Nimble
-import Foundation
-import DateKit
 
 class NSDateExtensionsSpec: QuickSpec {
     override func spec() {
+        
         describe("Date single component") {
+            
             describe("second") {
                 itBehavesLike("component") {
                     ["unit": NSCalendarUnit.CalendarUnitSecond.rawValue, "value": 5]
@@ -43,11 +43,11 @@ class NSDateExtensionsSpec: QuickSpec {
             
             describe("era") {
                 itBehavesLike("component") {
-                    ["unit": NSCalendarUnit.CalendarUnitEra.rawValue, "value": 0, "debug": true]
+                    ["unit": NSCalendarUnit.CalendarUnitEra.rawValue, "value": 0]
                 }
                 
                 itBehavesLike("component") {
-                    ["unit": NSCalendarUnit.CalendarUnitEra.rawValue, "value": 1, "debug": true]
+                    ["unit": NSCalendarUnit.CalendarUnitEra.rawValue, "value": 1]
                 }
             }
         }
@@ -109,188 +109,127 @@ class NSDateExtensionsSpec: QuickSpec {
         }
         
         describe("Date comparison for units") {
-            let lhs = NSDate()
-            var rhs: NSDate? = nil
-            var units: [NSCalendarUnit] = []
-            
-            afterEach {
-                units.removeAll(keepCapacity: false)
-                rhs = nil
-            }
+
+            let baseDate = NSDate()
+            var modifiedDate = NSDate()
             
             describe("default") {
+                
+                var lhs: NSDate!
+                var rhs: NSDate!
+
                 describe("for same time") {
-                    beforeEach { rhs = lhs }
+                    
+                    beforeEach {
+                        lhs = baseDate
+                        rhs = baseDate.copy() as! NSDate
+                        
+                    }
                     
                     it("should be equal") {
-                        expect(lhs.compare(toDate: rhs!).rawValue).to(equal(NSComparisonResult.OrderedSame.rawValue))
+                        expect(lhs.compare(toDate: rhs).same).to(beTrue())
                     }
                     
                     it("should not be equal") {
                         rhs = (lhs.year(1989) as Operation).date
-                        expect(lhs.compare(toDate: rhs!).rawValue).notTo(equal(NSComparisonResult.OrderedSame.rawValue))
+                        expect(lhs.compare(toDate: rhs).same).notTo(beTrue())
                     }
                 }
                 
                 describe("for different time") {
-                    beforeEach { rhs = lhs.dateByAddingTimeInterval(60*30) }
+
+                    beforeEach {
+                        lhs = baseDate
+                        rhs = baseDate.dateByAddingTimeInterval(60*30)
+                    }
 
                     it("should be equal") {
-                        expect(lhs.compare(toDate: rhs!).rawValue).to(equal(NSComparisonResult.OrderedSame.rawValue))
+                        expect(lhs.compare(toDate: rhs).same).to(beTrue())
                     }
                     
                     it("should not be equal") {
                         rhs = (lhs.year(1989) as Operation).date
-                        expect(lhs.compare(toDate: rhs!).rawValue).notTo(equal(NSComparisonResult.OrderedSame.rawValue))
+                        expect(lhs.compare(toDate: rhs).same).notTo(beTrue())
                     }
                 }
             }
-
+            
             describe("second") {
-                beforeEach { units = [.CalendarUnitSecond] }
                 
-                describe("for same dates") {
-                    beforeEach { rhs = lhs }
-                    
-                    it("should be equal") {
-                        var result: NSComparisonResult = lhs.compare(toDate: rhs!, byUnits: units)
-                        expect(result.rawValue).to(equal(NSComparisonResult.OrderedSame.rawValue))
-                    }
-                }
+                modifiedDate = (baseDate.second(60 - baseDate.second) as Operation).date
                 
-                describe("for different dates") {
-                    beforeEach {
-                        rhs = (lhs.second(60 - lhs.second) as Operation).date
-                    }
-                    
-                    it("should not be equal") {
-                        var result: NSComparisonResult = lhs.compare(toDate: rhs!, byUnits: units)
-                        expect(result.rawValue).notTo(equal(NSComparisonResult.OrderedSame.rawValue))
-                    }
-                }
+                itBehavesLike("Date comparison") {[
+                    "original": baseDate,
+                    "modified": modifiedDate,
+                    "units": [NSCalendarUnit.CalendarUnitSecond.rawValue]
+                ]}
             }
             
             describe("minute") {
-                beforeEach { units = [.CalendarUnitMinute] }
                 
-                describe("for same dates") {
-                    beforeEach { rhs = lhs }
-                    
-                    it("should be equal") {
-                        var result: NSComparisonResult = lhs.compare(toDate: rhs!, byUnits: units)
-                        expect(result.rawValue).to(equal(NSComparisonResult.OrderedSame.rawValue))
-                    }
-                }
+                modifiedDate = (baseDate.minute(60 - baseDate.minute) as Operation).date
                 
-                describe("for different dates") {
-                    beforeEach { rhs = (lhs.minute(60 - lhs.minute) as Operation).date }
-                    
-                    it("should not be equal") {
-                        var result: NSComparisonResult = lhs.compare(toDate: rhs!, byUnits: units)
-                        expect(result.rawValue).notTo(equal(NSComparisonResult.OrderedSame.rawValue))
-                    }
-                }
+                itBehavesLike("Date comparison") {[
+                    "original": baseDate,
+                    "modified": modifiedDate,
+                    "units": [NSCalendarUnit.CalendarUnitMinute.rawValue]
+                ]}
             }
             
             describe("hour") {
-                beforeEach { units = [.CalendarUnitHour] }
                 
-                describe("for same dates") {
-                    beforeEach { rhs = lhs }
-                    
-                    it("should be equal") {
-                        var result: NSComparisonResult = lhs.compare(toDate: rhs!, byUnits: units)
-                        expect(result.rawValue).to(equal(NSComparisonResult.OrderedSame.rawValue))
-                    }
-                }
+                modifiedDate = (baseDate.hour(24 - baseDate.hour) as Operation).date
                 
-                describe("for different dates") {
-                    beforeEach { rhs = (lhs.hour(24 - lhs.hour) as Operation).date }
-                    
-                    it("should not be equal") {
-                        var result: NSComparisonResult = lhs.compare(toDate: rhs!, byUnits: units)
-                        expect(result.rawValue).notTo(equal(NSComparisonResult.OrderedSame.rawValue))
-                    }
-                }
-
+                itBehavesLike("Date comparison") {[
+                    "original": baseDate,
+                    "modified": modifiedDate,
+                    "units": [NSCalendarUnit.CalendarUnitHour.rawValue]
+                ]}
             }
 
             describe("day") {
-                beforeEach { units = [.CalendarUnitDay] }
                 
-                describe("for same dates") {
-                    beforeEach { rhs = lhs }
-                    
-                    it("should be equal") {
-                        var result: NSComparisonResult = lhs.compare(toDate: rhs!, byUnits: units)
-                        expect(result.rawValue).to(equal(NSComparisonResult.OrderedSame.rawValue))
-                    }
-                }
+                modifiedDate = (baseDate.day(1) as Operation).date
                 
-                describe("for different dates") {
-                    beforeEach { rhs = (lhs.day(1) as Operation).date }
-                    
-                    it("should not be equal") {
-                        var result: NSComparisonResult = lhs.compare(toDate: rhs!, byUnits: units)
-                        expect(result.rawValue).notTo(equal(NSComparisonResult.OrderedSame.rawValue))
-                    }
-                }
+                itBehavesLike("Date comparison") {[
+                    "original": baseDate,
+                    "modified": modifiedDate,
+                    "units": [NSCalendarUnit.CalendarUnitDay.rawValue]
+                ]}
             }
             
             describe("month") {
-                beforeEach { units = [.CalendarUnitMonth] }
-        
-                describe("for same dates") {
-                    beforeEach { rhs = lhs }
-                    
-                    it("should be equal") {
-                        var result: NSComparisonResult = lhs.compare(toDate: rhs!, byUnits: units)
-                        expect(result.rawValue).to(equal(NSComparisonResult.OrderedSame.rawValue))
-                    }
-                }
                 
-                describe("for different dates") {
-                    beforeEach { rhs = (lhs.month(12 - lhs.month)as Operation).date }
-                    
-                    it("should not be equal") {
-                        var result: NSComparisonResult = lhs.compare(toDate: rhs!, byUnits: units)
-                        expect(result.rawValue).notTo(equal(NSComparisonResult.OrderedSame.rawValue))
-                    }
-                }
+                modifiedDate = (baseDate.month(12 - baseDate.month)as Operation).date
+                
+                itBehavesLike("Date comparison") {[
+                    "original": baseDate,
+                    "modified": modifiedDate,
+                    "units": [NSCalendarUnit.CalendarUnitMonth.rawValue]
+                ]}
             }
             
             describe("year") {
-                beforeEach { units = [.CalendarUnitYear] }
                 
-                describe("for same dates") {
-                    beforeEach { rhs = lhs }
-                    
-                    it("should be equal") {
-                        var result: NSComparisonResult = lhs.compare(toDate: rhs!, byUnits: units)
-                        expect(result.rawValue).to(equal(NSComparisonResult.OrderedSame.rawValue))
-                    }
-                }
+                modifiedDate = (baseDate.year(1989) as Operation).date
                 
-                describe("for different dates") {
-                    beforeEach { rhs = (lhs.year(1989) as Operation).date }
-                    
-                    it("should not be equal") {
-                        var result: NSComparisonResult = lhs.compare(toDate: rhs!, byUnits: units)
-                        expect(result.rawValue).notTo(equal(NSComparisonResult.OrderedSame.rawValue))
-                    }
-                }
+                itBehavesLike("Date comparison") {[
+                    "original": baseDate,
+                    "modified": modifiedDate,
+                    "units": [NSCalendarUnit.CalendarUnitYear.rawValue]
+                ]}
             }
         }
     
         describe("Date helpers") {
-            let baseDate: NSDate = NSDate()
+            let baseDate = NSDate()
             
-            var referenceDate: NSDate? = nil
-            var helperString: String? = nil
+            var referenceDate: NSDate! = nil
+            var helperString: String! = nil
             
-            var configDict: [String: AnyObject]? = Dictionary()
+            var configDict = [String: AnyObject]()
             
-            let configurationDict: (NSDate, String) -> [String: AnyObject] = { (referenceDate: NSDate, helperString: String) in
+            let configuration: (NSDate, String) -> [String: AnyObject] = { referenceDate, helperString in
                 [
                     "baseDate": baseDate,
                     "referenceDate": referenceDate,
@@ -313,7 +252,7 @@ class NSDateExtensionsSpec: QuickSpec {
                 referenceDate = components.date
                 helperString = "midnight"
                 
-                itBehavesLike("Date helper") { configurationDict(referenceDate!, helperString!) }
+                itBehavesLike("Date helper") { configuration(referenceDate!, helperString!) }
             }
             
             describe("noon helper") {
@@ -326,7 +265,7 @@ class NSDateExtensionsSpec: QuickSpec {
                 referenceDate = components.date
                 helperString = "noon"
                 
-                itBehavesLike("Date helper") { configurationDict(referenceDate!, helperString!) }
+                itBehavesLike("Date helper") { configuration(referenceDate!, helperString!) }
             }
 
             describe("yesterday helper") {
@@ -337,7 +276,7 @@ class NSDateExtensionsSpec: QuickSpec {
                 referenceDate = components.date
                 helperString = "yesterday"
                 
-                itBehavesLike("Date helper") { configurationDict(referenceDate!, helperString!) }
+                itBehavesLike("Date helper") { configuration(referenceDate!, helperString!) }
             }
 
             describe("tomorrow helper") {
@@ -348,13 +287,13 @@ class NSDateExtensionsSpec: QuickSpec {
                 referenceDate = components.date
                 helperString = "tomorrow"
                 
-                itBehavesLike("Date helper") { configurationDict(referenceDate!, helperString!) }
+                itBehavesLike("Date helper") { configuration(referenceDate!, helperString!) }
             }
             
             describe("between helper") {
-                let firstDate: NSDate = NSDate()
-                let secondDate: NSDate = (firstDate.days as Operation) + 1
-                let testDate: NSDate = (firstDate.hours as Operation) + 1
+                let firstDate = NSDate()
+                let secondDate = (firstDate.days as Operation) + 1
+                let testDate = (firstDate.hours as Operation) + 1
 
                 it("should return true") {
                     var result = testDate.between(earlier: firstDate, later: secondDate)
@@ -371,142 +310,6 @@ class NSDateExtensionsSpec: QuickSpec {
                     expect(thirdResult).notTo(beTrue())
                 }
             }
-        }
-    }
-}
-
-class NSDateComponentSharedConfiguration : QuickConfiguration {
-    override class func configure(configuration: Configuration) {
-        sharedExamples("component") { (sharedExampleContext: SharedExampleContext) in
-            var configurationDict: [String: AnyObject] = sharedExampleContext() as! [String: AnyObject]
-            
-            var referenceDate: NSDate? = nil
-            var testDate: NSDate! = nil
-            
-            let unit: UInt = configurationDict["unit"] as! UInt!
-            let value: Int = configurationDict["value"] as! Int!
-            
-            let debug: Bool? = configurationDict["debug"] as! Bool?
-            
-            beforeEach {
-                let originDate = NSDate(timeIntervalSince1970: 0)
-                referenceDate = originDate.mock_referenceDate(NSCalendarUnit(unit), value: value)
-                testDate = originDate.setComponent(unit, value: value)
-            }
-            
-            afterEach {
-                referenceDate = nil
-                testDate = nil
-            }
-            it("should not be nil") {
-                expect(testDate).notTo(beNil())
-            }
-            
-            it("should have correct \(NSCalendarUnit(unit).string())") {
-                var comparisonResult: NSComparisonResult? = referenceDate?.compare(testDate)
-                if debug != nil {
-                    println("\ndebugging component \(NSCalendarUnit(unit).string())")
-                    println("\t referenceDate \(referenceDate)")
-                    println("\t testDate \(testDate)")
-                    println("\t comparisonResult \(comparisonResult?.rawValue)")
-                }
-                expect(comparisonResult!.rawValue).to(equal(NSComparisonResult.OrderedSame.rawValue))
-            }
-            
-            it("should get correct seconds") {
-                var result = testDate.component(unit)
-                if debug != nil {
-                    println("\ndebugging component \(NSCalendarUnit(unit).string())")
-                    println("\t referenceDate \(referenceDate)")
-                    println("\t testDate \(testDate)")
-                    println("\t result \(result)")
-                }
-                expect(result).to(equal(value))
-            }
-        }
-    }
-}
-
-class NSDateHelperSharedConfiguration : QuickConfiguration {
-    override class func configure(configuration: Configuration) {
-        sharedExamples("Date helper") { (sharedExampleContext: SharedExampleContext) in
-            var configDict: [String: AnyObject] = sharedExampleContext() as! [String: AnyObject]
-
-            let helperString: String = configDict["helper"] as! String
-            let debug: Bool? = configDict["debug"] as! Bool?
-            let baseDate: NSDate = configDict["baseDate"] as! NSDate
-            let referenceDate: NSDate = configDict["referenceDate"] as! NSDate
-
-            var resultDate: NSDate? = nil
-            
-            beforeEach { resultDate = baseDate.dateFromHelpersString(helperString) }
-            afterEach { resultDate = nil }
-            
-            it("should be equal to reference date") {
-                expect(resultDate).to(equal(referenceDate))
-            }
-        }
-    }
-}
-
-
-// MARK: Spec helpers
-
-extension NSDate {
-    internal func mock_referenceDate(unit: NSCalendarUnit, value: Int) -> NSDate? {
-        var components: NSDateComponents = self.components
-        
-        if unit == .CalendarUnitYear || unit == .CalendarUnitYearForWeekOfYear {
-            components.setValue(value, forKey: NSCalendarUnit.CalendarUnitYear.string())
-            components.setValue(value, forKey: NSCalendarUnit.CalendarUnitYearForWeekOfYear.string())
-        } else {
-            components.setValue(value, forKey: unit.string())
-        }
-        
-        return DateKit.calendar.dateFromComponents(components)
-    }
-}
-
-extension NSDate {
-    internal func setComponent(component: UInt!, value: Int!) -> NSDate? {
-        var unit: DateKit.Unit = NSCalendarUnit(component).dateKitUnit()
-        
-        switch unit {
-        case .Second:       return (self.second(value) as Operation).date
-        case .Minute:       return (self.minute(value) as Operation).date
-        case .Hour:         return (self.hour(value) as Operation).date
-        case .Day:          return (self.day(value) as Operation).date
-        case .Month:        return (self.month(value) as Operation).date
-        case .Year:         return (self.year(value) as Operation).date
-        case .Era:          return (self.era(DateKit.Era(integerLiteral: value)) as Operation).date
-        default: return self
-        }
-    }
-    
-    internal func component(component: UInt!) -> Int {
-        var unit: DateKit.Unit = NSCalendarUnit(component).dateKitUnit()
-        
-        switch unit {
-        case .Second:       return self.second
-        case .Minute:       return self.minute
-        case .Hour:         return self.hour
-        case .Day:          return self.day
-        case .Month:        return self.month
-        case .Year:         return self.year
-        case .Era:          return self.era
-        default: return -1
-        }
-    }
-}
-
-extension NSDate {
-    func dateFromHelpersString(helperString: String) -> NSDate {
-        switch helperString {
-        case "midnight":    return self.midnight
-        case "noon":        return self.noon
-        case "yesterday":   return self.yesterday
-        case "tomorrow":    return self.tomorrow
-        default:            return self
         }
     }
 }

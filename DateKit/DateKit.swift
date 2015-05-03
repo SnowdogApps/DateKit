@@ -8,17 +8,20 @@
 
 import Foundation
 
-internal var _calendar: NSCalendar = NSCalendar.currentCalendar()
-
 public class DateKit {
+    
+    private struct Calendar {
+        static var current = NSCalendar.currentCalendar()
+    }
+    
     public class var calendar: NSCalendar {
-        get { return _calendar }
-        set { _calendar = newValue }
+        get { return Calendar.current }
+        set { Calendar.current = newValue }
     }
 }
 
-extension DateKit {
-    public enum Era: Int, IntegerLiteralConvertible {
+public extension DateKit {
+    enum Era: Int, IntegerLiteralConvertible {
         public init(integerLiteral: Int) {
             self = .AC
             if integerLiteral == 0 {
@@ -51,8 +54,8 @@ extension DateKit {
     }
 }
 
-extension DateKit.Unit {
-    internal func calendarUnit() -> NSCalendarUnit {
+internal extension DateKit.Unit {
+    func calendarUnit() -> NSCalendarUnit {
         switch self {
         case .Nanosecond:       return .CalendarUnitNanosecond
         case .Second:           return .CalendarUnitSecond
@@ -72,23 +75,23 @@ extension DateKit.Unit {
         }
     }
     
-    internal func string() -> String {
+    func string() -> String {
         return calendarUnit().string()
     }
 }
 
 
 // MARK: NSCalendar Extensions
-extension NSCalendar {
-    internal func components(fromDate: NSDate) -> NSDateComponents {
+internal extension NSCalendar {
+    func components(fromDate: NSDate) -> NSDateComponents {
         return self.components(NSCalendarUnit(UInt.max), fromDate: fromDate);
     }
 }
 
 
 // MARK: NSCalendarUnit Extensions
-extension NSCalendarUnit {
-    internal func dateKitUnit() -> DateKit.Unit {
+internal extension NSCalendarUnit {
+    func dateKitUnit() -> DateKit.Unit {
         switch self {
         case NSCalendarUnit.CalendarUnitNanosecond:     return .Nanosecond
         case NSCalendarUnit.CalendarUnitSecond:         return .Second
@@ -113,8 +116,8 @@ extension NSCalendarUnit {
     }
 }
 
-extension NSCalendarUnit {
-    internal var nextUnit: NSCalendarUnit {
+internal extension NSCalendarUnit {
+    var nextUnit: NSCalendarUnit {
         get {
             switch self {
             case NSCalendarUnit.CalendarUnitMinute:
@@ -132,7 +135,7 @@ extension NSCalendarUnit {
         }
     }
     
-    internal func length(forDate date: NSDate) -> Int {
+    func length(forDate date: NSDate) -> Int {
         switch self {
         case NSCalendarUnit.CalendarUnitSecond: return 1000
         case NSCalendarUnit.CalendarUnitMinute: return 60
@@ -148,21 +151,19 @@ extension NSCalendarUnit {
     }
 }
 
-
-// MARK: String Extensions
-extension String {
-    internal func dateKitUnit() -> DateKit.Unit? {
-        return DateKit.Unit(rawValue: self)
-    }
+// MARK: NSComparisonResult Extensions
+public extension NSComparisonResult {
+    var same:       Bool { get { return self == NSComparisonResult.OrderedSame } }
+    var ascending:  Bool { get { return self == NSComparisonResult.OrderedAscending } }
+    var descending: Bool { get { return self == NSComparisonResult.OrderedDescending } }
+    var notSame:       Bool { get { return self != NSComparisonResult.OrderedSame } }
+    var notAscending:  Bool { get { return self != .OrderedAscending } }
+    var notDescending: Bool { get { return self != .OrderedDescending } }
 }
 
-
-// MARK: NSComparisonResult Extensions
-extension NSComparisonResult {
-    public var same:       Bool { get { return self == NSComparisonResult.OrderedSame } }
-    public var ascending:  Bool { get { return self == NSComparisonResult.OrderedAscending } }
-    public var descending: Bool { get { return self == NSComparisonResult.OrderedDescending } }
-    public var notSame:       Bool { get { return self != NSComparisonResult.OrderedSame } }
-    public var notAscending:  Bool { get { return self != NSComparisonResult.OrderedAscending } }
-    public var notDescending: Bool { get { return self != NSComparisonResult.OrderedDescending } }
+// MARK: String Extensions
+internal extension String {
+    func dateKitUnit() -> DateKit.Unit? {
+        return DateKit.Unit(rawValue: self)
+    }
 }

@@ -4,7 +4,6 @@ import Foundation
 import DateKit
 
 
-
 let today = NSDate()
 let otherToday = today
 var tomorrow = today.dateByAddingTimeInterval(24*60*60)

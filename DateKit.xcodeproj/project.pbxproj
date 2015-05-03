@@ -21,7 +21,18 @@
 		BF66C5B11A7018B50023C020 /* NSDateInternalHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF66C5B01A7018B50023C020 /* NSDateInternalHelpers.swift */; };
 		BF6FA9921A38D087006FCCE9 /* DateKit.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6FA9911A38D087006FCCE9 /* DateKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF6FA9981A38D087006FCCE9 /* DateKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6FA98C1A38D087006FCCE9 /* DateKit.framework */; };
+		BF962B701AF17070004BB540 /* NSDateSpecExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF962B6E1AF17070004BB540 /* NSDateSpecExtensions.swift */; };
+		BF962B711AF17070004BB540 /* OperationSpecExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF962B6F1AF17070004BB540 /* OperationSpecExtensions.swift */; };
+		BF962B751AF17081004BB540 /* NSDateComparisonSharedExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF962B721AF17081004BB540 /* NSDateComparisonSharedExample.swift */; };
+		BF962B761AF17081004BB540 /* NSDateComponentSharedExample.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF962B731AF17081004BB540 /* NSDateComponentSharedExample.swift.swift */; };
+		BF962B771AF17081004BB540 /* NSDateHelperSharedExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF962B741AF17081004BB540 /* NSDateHelperSharedExample.swift */; };
 		BFA68E5A1A96376B00C1AEC9 /* DateKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF6FA98C1A38D087006FCCE9 /* DateKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BFC8304F1AF6464F001DCEA7 /* OperationPropertiesSharedExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8304E1AF6464F001DCEA7 /* OperationPropertiesSharedExample.swift */; };
+		BFC830511AF6479C001DCEA7 /* OperationMathOperationSharedExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC830501AF6479C001DCEA7 /* OperationMathOperationSharedExample.swift */; };
+		BFC830531AF6496D001DCEA7 /* OperationGettersSharedExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC830521AF6496D001DCEA7 /* OperationGettersSharedExample.swift */; };
+		BFC830551AF64AD8001DCEA7 /* OperationHelpersForUnitSharedExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC830541AF64AD8001DCEA7 /* OperationHelpersForUnitSharedExample.swift */; };
+		BFC830571AF64B10001DCEA7 /* OperationHelpersSharedExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC830561AF64B10001DCEA7 /* OperationHelpersSharedExample.swift */; };
+		BFC830591AF64E4E001DCEA7 /* OperationUnitLengthSharedExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC830581AF64E4E001DCEA7 /* OperationUnitLengthSharedExample.swift */; };
 		BFD370A11A70192900217378 /* NSDateInternalHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF66C5B01A7018B50023C020 /* NSDateInternalHelpers.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +76,17 @@
 		BF6FA9911A38D087006FCCE9 /* DateKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateKit.h; sourceTree = "<group>"; };
 		BF6FA9971A38D087006FCCE9 /* DateKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DateKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF6FA99D1A38D087006FCCE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF962B6E1AF17070004BB540 /* NSDateSpecExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateSpecExtensions.swift; sourceTree = "<group>"; };
+		BF962B6F1AF17070004BB540 /* OperationSpecExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationSpecExtensions.swift; sourceTree = "<group>"; };
+		BF962B721AF17081004BB540 /* NSDateComparisonSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateComparisonSharedExample.swift; sourceTree = "<group>"; };
+		BF962B731AF17081004BB540 /* NSDateComponentSharedExample.swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateComponentSharedExample.swift.swift; sourceTree = "<group>"; };
+		BF962B741AF17081004BB540 /* NSDateHelperSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateHelperSharedExample.swift; sourceTree = "<group>"; };
+		BFC8304E1AF6464F001DCEA7 /* OperationPropertiesSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationPropertiesSharedExample.swift; sourceTree = "<group>"; };
+		BFC830501AF6479C001DCEA7 /* OperationMathOperationSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationMathOperationSharedExample.swift; sourceTree = "<group>"; };
+		BFC830521AF6496D001DCEA7 /* OperationGettersSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationGettersSharedExample.swift; sourceTree = "<group>"; };
+		BFC830541AF64AD8001DCEA7 /* OperationHelpersForUnitSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationHelpersForUnitSharedExample.swift; sourceTree = "<group>"; };
+		BFC830561AF64B10001DCEA7 /* OperationHelpersSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationHelpersSharedExample.swift; sourceTree = "<group>"; };
+		BFC830581AF64E4E001DCEA7 /* OperationUnitLengthSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationUnitLengthSharedExample.swift; sourceTree = "<group>"; };
 		BFCB33521A65203900611837 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
@@ -152,6 +174,8 @@
 		BF6FA99B1A38D087006FCCE9 /* DateKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				BF962B651AF16BB8004BB540 /* Spec Extensions */,
+				BF962B621AF16B5B004BB540 /* Shared Examples */,
 				BF01D69E1A3A59E800D05667 /* Specs */,
 				BF6FA99C1A38D087006FCCE9 /* Supporting Files */,
 			);
@@ -164,6 +188,32 @@
 				BF6FA99D1A38D087006FCCE9 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BF962B621AF16B5B004BB540 /* Shared Examples */ = {
+			isa = PBXGroup;
+			children = (
+				BF962B721AF17081004BB540 /* NSDateComparisonSharedExample.swift */,
+				BF962B731AF17081004BB540 /* NSDateComponentSharedExample.swift.swift */,
+				BF962B741AF17081004BB540 /* NSDateHelperSharedExample.swift */,
+				BFC8304E1AF6464F001DCEA7 /* OperationPropertiesSharedExample.swift */,
+				BFC830501AF6479C001DCEA7 /* OperationMathOperationSharedExample.swift */,
+				BFC830521AF6496D001DCEA7 /* OperationGettersSharedExample.swift */,
+				BFC830541AF64AD8001DCEA7 /* OperationHelpersForUnitSharedExample.swift */,
+				BFC830561AF64B10001DCEA7 /* OperationHelpersSharedExample.swift */,
+				BFC830581AF64E4E001DCEA7 /* OperationUnitLengthSharedExample.swift */,
+			);
+			path = "Shared Examples";
+			sourceTree = "<group>";
+		};
+		BF962B651AF16BB8004BB540 /* Spec Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BF962B6E1AF17070004BB540 /* NSDateSpecExtensions.swift */,
+				BF962B6F1AF17070004BB540 /* OperationSpecExtensions.swift */,
+			);
+			name = "Spec Extensions";
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		DDEC09AF48B72CCBE6085F98 /* Pods */ = {
@@ -360,11 +410,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF962B771AF17081004BB540 /* NSDateHelperSharedExample.swift in Sources */,
 				BF66C5AB1A7016850023C020 /* DKOperation.swift in Sources */,
 				BF66C5AC1A7016850023C020 /* DKProtocols.swift in Sources */,
+				BFC830551AF64AD8001DCEA7 /* OperationHelpersForUnitSharedExample.swift in Sources */,
+				BFC830571AF64B10001DCEA7 /* OperationHelpersSharedExample.swift in Sources */,
+				BF962B761AF17081004BB540 /* NSDateComponentSharedExample.swift.swift in Sources */,
 				BF4411831A7555CC009C119A /* NSDateExtensionsSpec.swift in Sources */,
+				BFC830591AF64E4E001DCEA7 /* OperationUnitLengthSharedExample.swift in Sources */,
+				BF962B751AF17081004BB540 /* NSDateComparisonSharedExample.swift in Sources */,
+				BFC8304F1AF6464F001DCEA7 /* OperationPropertiesSharedExample.swift in Sources */,
 				BFD370A11A70192900217378 /* NSDateInternalHelpers.swift in Sources */,
 				BF4411821A7555CC009C119A /* DKOperationSpec.swift in Sources */,
+				BF962B711AF17070004BB540 /* OperationSpecExtensions.swift in Sources */,
+				BFC830531AF6496D001DCEA7 /* OperationGettersSharedExample.swift in Sources */,
+				BF962B701AF17070004BB540 /* NSDateSpecExtensions.swift in Sources */,
+				BFC830511AF6479C001DCEA7 /* OperationMathOperationSharedExample.swift in Sources */,
 				BF66C5AD1A7016850023C020 /* NSDateExtensions.swift in Sources */,
 				BF66C5AF1A7017580023C020 /* DateKit.swift in Sources */,
 			);
